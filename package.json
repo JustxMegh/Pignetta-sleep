@@ -1,0 +1,14 @@
+{
+  "name": "sleep-role-bot",
+  "version": "1.0.0",
+  "description": "Discord bot that toggles an 'asleep'/'awake' reaction role, keeps them mutually exclusive, and logs how long each role was held.",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5"
+  }
+}
