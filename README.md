@@ -63,7 +63,8 @@ every time a role is removed, the bot logs how long the user held it.
   if you want it lower down in the channel, or the old one got buried).
   This always creates a new message rather than reusing the old one.
 - Reacting ✅ → user gets "asleep" (their "awake" role is removed first,
-  and that duration is logged).
+  and that duration is logged). If `ASLEEP_VOICE_CHANNEL_ID` is set and
+  the user is currently in any voice channel, they're also moved into it.
 - Reacting ❌ → user gets "awake" (their "asleep" role is removed first,
   and that duration is logged).
 - Removing your own reaction also removes the matching role and logs the
@@ -82,3 +83,9 @@ you set as `REACTION_ROLE_CHANNEL_ID`. Also make sure your bot's invite
 link included the `applications.commands` scope (in addition to `bot`),
 or the slash command won't show up in Discord — you can regenerate the
 invite link under the **OAuth2 → URL Generator** tab if needed.
+
+If you're using `ASLEEP_VOICE_CHANNEL_ID` to auto-move sleeping users,
+the bot's role also needs **Move Members** permission, and needs to be
+able to see/connect to both the voice channel the user is currently in
+and the target voice channel (permission overwrites on either channel
+can block this even if the bot has the permission server-wide).
