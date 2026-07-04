@@ -175,8 +175,14 @@ const client = new Client({
   partials: [Partials.Message, Partials.Channel, Partials.Reaction, Partials.User],
 });
 
-client.once('ready', () => {
+client.once('ready', async () => {
   console.log(`Logged in as ${client.user.tag}`);
+
+  const channel = await client.channels.fetch(process.env.REACTION_ROLE_CHANNEL_ID);
+  const message = await channel.messages.fetch(process.env.REACTION_ROLE_MESSAGE_ID);
+  await message.react(process.env.TICK_EMOJI);
+  await message.react(process.env.X_EMOJI);
+});
 });
 
 async function handleReaction(reaction, user, added) {
